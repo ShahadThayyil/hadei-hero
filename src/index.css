@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Meiro';
+  src: url('/fonts/meiro.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-meiro {
+  font-family: 'Meiro', sans-serif !important;
+}
+
+@import "tailwindcss";
