@@ -6,157 +6,173 @@ export default function HadeiJoinForm() {
   const navigate = useNavigate();
 
   return (
-    <div className="relative min-h-[100dvh] w-full bg-[#0a0d0a] text-white font-meiro flex flex-col md:flex-row selection:bg-[#F5F216] selection:text-black overflow-x-hidden">
+    <div className="relative h-[100dvh] w-full bg-[#0a0d0a] text-white font-meiro flex flex-col items-center justify-center selection:bg-[#F5F216] selection:text-black overflow-y-scroll pt-20 md:pt-28 pb-4 md:pb-8">
       
       {/* ── BACKGROUND ARCHITECTURE ── */}
       <div 
-        className="fixed inset-0 z-0 opacity-[0.15] mix-blend-screen pointer-events-none"
+        className="absolute inset-0 z-0 opacity-[0.15] mix-blend-screen pointer-events-none fixed"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
         }}
       ></div>
       
-      <div className="fixed top-1/4 -left-20 w-[50vw] h-[50vw] bg-[#F5F216] opacity-[0.08] blur-[150px] rounded-full pointer-events-none z-0"></div>
-      <div className="fixed bottom-0 right-0 w-[40vw] h-[40vw] bg-[#1a2e1a] opacity-20 blur-[130px] rounded-full pointer-events-none z-0"></div>
+      {/* Centered Neon Glow behind the card */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] md:w-[40vw] md:h-[40vw] bg-[#F5F216] opacity-[0.07] blur-[120px] rounded-full pointer-events-none z-0 fixed"></div>
 
-      {/* ── LEFT SIDE: IMMERSIVE BRANDING ── */}
-      <div className="relative z-10 flex-1 flex flex-col justify-between p-6 md:p-12 lg:p-16 min-h-[45vh] md:min-h-[100dvh]">
+      {/* ── ABSOLUTE HEADER ── */}
+      <header className="absolute top-0 left-0 w-full z-40 flex items-center justify-between px-5 py-4 md:px-12  shrink-0">
+        <div 
+          onClick={() => navigate('/')} 
+          className="flex items-center justify-center bg-[#F5F216] px-4 md:px-5 py-1 rounded-md cursor-pointer group transition-all duration-300 hover:scale-105 hover:bg-[#fffb29] shadow-[0_0_15px_rgba(245,242,22,0.15)] hover:shadow-[0_0_25px_rgba(245,242,22,0.3)] w-fit"
+        >
+          <img 
+            src="https://res.cloudinary.com/dmtzmgbkj/image/upload/v1780479006/WhatsApp_Image_2026-05-22_at_2.18.05_PM__1_-removebg-preview_befo5g.png" 
+            alt="Hadei Logo" 
+            className="h-5 md:h-8 w-auto object-contain" 
+          />
+        </div>
+      </header>
+
+      {/* ── CENTERED CONTENT ── */}
+      <div className="relative z-20 flex flex-col items-center w-full max-w-2xl px-4 md:px-5 mt-4 md:mt-16 max-h-full md:mb-16">
         
-        {/* Header / Logo */}
-        <header className="flex items-center justify-between w-full">
-          <div onClick={() => navigate('/')} className="flex items-center cursor-pointer group w-fit">
-            <span className="text-2xl md:text-3xl font-black tracking-tighter text-white transition-transform duration-300 group-hover:scale-105">
-              hade<span className="inline-block transform rotate-180 origin-center text-[#F5F216]">e</span>i.
-            </span>
-          </div>
-        </header>
-
-        {/* Hero Typography */}
-        <div className="flex flex-col mt-auto mb-4 md:mb-10">
+        {/* Typography Heading */}
+        <div className="flex flex-col items-center text-center mb-4 md:mb-8 gap-1.5 md:gap-3 shrink-0">
          
           
-          <h1 className="text-[16vw] md:text-[8vw] lg:text-[7vw] leading-[0.85] font-black uppercase tracking-tighter text-white z-20">
-            Build
-            <br />
-            <span className="text-transparent" style={{ WebkitTextStroke: '2px #F5F216' }}>Beyond</span>
-            <br />
-            Limits.
+          <h1 className="text-[8.5vw] sm:text-[6vw] md:text-[3.5rem] leading-[0.9] font-black uppercase tracking-tighter text-white">
+            BUILD BEYOND <br className="md:" /> <span className="text-[#F5F216] drop-shadow-[0_0_15px_rgba(245,242,22,0.2)]">LIMITS</span>
           </h1>
-          <p className="mt-6 text-sm md:text-base lg:text-lg font-medium tracking-wide text-white/70 max-w-sm md:max-w-md">
+          
+          {/* Description text */}
+          <p className="mt-1 md:mt-2 text-[9px] sm:text-[10px] md:text-sm font-medium tracking-wide text-white/70 max-w-[90%] md:max-w-md leading-relaxed">
             We're recruiting top-tier creatives and closers to collaborate on verified, high-value projects.
           </p>
         </div>
-      </div>
 
-      {/* ── RIGHT SIDE: FORM PANEL ── */}
-      <div className="relative z-20 w-full md:w-[480px] lg:w-[550px] md:min-h-[100dvh] bg-[#080a08]/80 backdrop-blur-2xl border-t md:border-t-0 md:border-l border-white/10 flex flex-col justify-center p-6 md:p-10 lg:p-12 shrink-0 shadow-[-20px_0_50px_rgba(0,0,0,0.5)]">
-        
-        <div className="w-full max-w-md mx-auto">
-          {/* Form Header */}
-          <div className="flex flex-col gap-2 mb-8 md:mb-10">
-            <h2 className="text-2xl md:text-3xl font-black text-white leading-tight">
-              Submit Profile
-            </h2>
-            <p className="text-white/50 text-xs md:text-sm font-medium">
-              Secure your spot in the Hadei network.
-            </p>
-          </div>
+        {/* Floating Glassmorphic Form Card */}
+        <div className="w-full bg-[#080a08]/80 backdrop-blur-2xl border border-white/10 rounded-2xl md:rounded-3xl p-4 md:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative overflow-y-auto sm:overflow-visible max-h-[65vh] sm:max-h-none shrink-0 custom-scrollbar">
+          
+          {/* Subtle top inner glow */}
+          <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
 
-          {/* Form Elements */}
-          <form className="flex flex-col gap-5">
+          <form className="flex flex-col gap-3 md:gap-4">
             
-            {/* Input Group: Name */}
-            <div className="flex flex-col shrink-0 group">
-              <label className="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-2 transition-colors group-focus-within:text-[#F5F216]">
-                Full Name
-              </label>
-              <input 
-                type="text" 
-                className="w-full bg-transparent border-b border-white/20 py-2 text-white placeholder-white/20 text-base md:text-lg font-medium focus:outline-none focus:border-[#F5F216] transition-all rounded-none"
-                placeholder="Enter your name"
-                required
-              />
-            </div>
-
-            {/* Input Group: Email */}
-            <div className="flex flex-col shrink-0 group">
-              <label className="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-2 mt-2 transition-colors group-focus-within:text-[#F5F216]">
-                Email Address
-              </label>
-              <input 
-                type="email" 
-                className="w-full bg-transparent border-b border-white/20 py-2 text-white placeholder-white/20 text-base md:text-lg font-medium focus:outline-none focus:border-[#F5F216] transition-all rounded-none"
-                placeholder="hello@example.com"
-                required
-              />
-            </div>
-
-            {/* Input Group: Portfolio */}
-            <div className="flex flex-col shrink-0 group">
-              <label className="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-2 mt-2 transition-colors group-focus-within:text-[#F5F216]">
-                Portfolio / Social Link
-              </label>
-              <input 
-                type="url" 
-                className="w-full bg-transparent border-b border-white/20 py-2 text-white placeholder-white/20 text-base md:text-lg font-medium focus:outline-none focus:border-[#F5F216] transition-all rounded-none"
-                placeholder="https://yourwork.com"
-                required
-              />
-            </div>
-
-            {/* Select Group: Discipline */}
-            <div className="relative flex flex-col shrink-0 group">
-              <label className="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-2 mt-2 transition-colors group-focus-within:text-[#F5F216]">
-                Primary Discipline
-              </label>
-              <select 
-                className="w-full bg-transparent border-b border-white/20 py-2 text-white text-base md:text-lg font-medium appearance-none cursor-pointer focus:outline-none focus:border-[#F5F216] transition-all rounded-none"
-                required
-                defaultValue=""
-              >
-                <option value="" disabled className="bg-[#0a0d0a] text-white/50">Select your expertise...</option>
-                <option value="graphic_design" className="bg-[#111]">Graphic Designer</option>
-                <option value="content_creation" className="bg-[#111]">Content Creator</option>
-                <option value="telecalling" className="bg-[#111]">Telecaller / Sales</option>
-                <option value="other" className="bg-[#111]">Other</option>
-              </select>
-              {/* Custom Arrow */}
-              <div className="absolute right-2 bottom-3 pointer-events-none text-white/40 text-xs">
-                ▼
-              </div>
-            </div>
-
-            {/* ── BUTTON ROW: RETURN & SUBMIT ── */}
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mt-8 shrink-0">
-              
-              {/* Back Button */}
+            {/* ── BACK BUTTON (Top of the form) ── */}
+            <div className="flex justify-start mb-0.5 md:mb-1">
               <button 
                 type="button" 
                 onClick={() => navigate(-1)} 
-                className="group/btn sm:flex-[1] flex items-center justify-center gap-2 bg-white/5 border border-white/10 py-3.5 px-4 rounded-xl transition-all hover:bg-white/10 hover:border-white/30"
+                className="group/btn flex items-center justify-center gap-2 bg-transparent border border-white/10 py-1.5 px-3 rounded-lg transition-all hover:bg-white/5 hover:border-white/30"
               >
                 <LiaLongArrowAltLeftSolid className="h-4 w-4 text-white transform group-hover/btn:-translate-x-1 transition-transform duration-300" />
-                <span className="text-[11px] font-black uppercase tracking-widest text-white">
+                <span className="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-white">
                   Back
                 </span>
               </button>
+            </div>
+            
+            {/* Row 1: Name & Phone Number */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+              <div className="flex flex-col group">
+                <label className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-white/50 mb-1 md:mb-1.5 transition-colors group-focus-within:text-[#F5F216]">
+                  Full Name
+                </label>
+                <input 
+                  type="text" 
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 md:px-4 md:py-2.5 text-white placeholder-white/20 text-xs md:text-sm font-medium focus:outline-none focus:border-[#F5F216] focus:bg-white/10 transition-all"
+                  placeholder="John Doe"
+                  required
+                />
+              </div>
 
-              {/* Submit Button */}
+              <div className="flex flex-col group">
+                <label className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-white/50 mb-1 md:mb-1.5 transition-colors group-focus-within:text-[#F5F216]">
+                  Phone Number
+                </label>
+                <input 
+                  type="tel" 
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 md:px-4 md:py-2.5 text-white placeholder-white/20 text-xs md:text-sm font-medium focus:outline-none focus:border-[#F5F216] focus:bg-white/10 transition-all"
+                  placeholder="+1 (234) 567-890"
+                  required
+                />
+              </div>
+            </div>
+
+            {/* Row 2: Email & Portfolio */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+              <div className="flex flex-col group">
+                <label className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-white/50 mb-1 md:mb-1.5 transition-colors group-focus-within:text-[#F5F216]">
+                  Email Address
+                </label>
+                <input 
+                  type="email" 
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 md:px-4 md:py-2.5 text-white placeholder-white/20 text-xs md:text-sm font-medium focus:outline-none focus:border-[#F5F216] focus:bg-white/10 transition-all"
+                  placeholder="hello@example.com"
+                  required
+                />
+              </div>
+
+              <div className="flex flex-col group">
+                <label className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-white/50 mb-1 md:mb-1.5 transition-colors group-focus-within:text-[#F5F216]">
+                  Portfolio Link
+                </label>
+                <input 
+                  type="url" 
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 md:px-4 md:py-2.5 text-white placeholder-white/20 text-xs md:text-sm font-medium focus:outline-none focus:border-[#F5F216] focus:bg-white/10 transition-all"
+                  placeholder="https://yourwork.com"
+                  required
+                />
+              </div>
+            </div>
+
+            {/* Custom Text Field: Discipline (Full Width) */}
+            <div className="flex flex-col group">
+              <label className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-white/50 mb-1 md:mb-1.5 transition-colors group-focus-within:text-[#F5F216]">
+                Primary Expertise
+              </label>
+              <input 
+                type="text" 
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 md:px-4 md:py-2.5 text-white placeholder-white/20 text-xs md:text-sm font-medium focus:outline-none focus:border-[#F5F216] focus:bg-white/10 transition-all"
+                placeholder="e.g. Web Developer, Graphic Designer, Sales"
+                required
+              />
+            </div>
+
+            {/* ── BUTTON ROW: SUBMIT (Full Width) ── */}
+            <div className="mt-2 md:mt-3 shrink-0">
               <button 
                 type="submit" 
-                className="group/btn sm:flex-[2.5] flex items-center justify-center gap-3 bg-[#F5F216] py-3.5 px-6 rounded-xl transition-all hover:bg-[#fffb29] hover:scale-[1.02] shadow-[0_0_20px_rgba(245,242,22,0.15)] hover:shadow-[0_0_30px_rgba(245,242,22,0.3)]"
+                className="group/btn w-full flex items-center justify-center gap-3 bg-[#F5F216] py-3 md:py-3.5 px-4 rounded-lg transition-all hover:bg-[#fffb29] hover:scale-[1.02] shadow-[0_0_15px_rgba(245,242,22,0.15)] hover:shadow-[0_0_25px_rgba(245,242,22,0.3)]"
               >
-                <span className="text-[11px] font-black uppercase tracking-widest text-black">
+                <span className="text-[10px] md:text-[11px] font-black uppercase tracking-widest text-black">
                   Submit Application
                 </span>
-                <LiaLongArrowAltRightSolid className="h-5 w-5 text-black transform group-hover/btn:translate-x-1.5 transition-transform duration-300" />
+                <LiaLongArrowAltRightSolid className="h-4 w-4 text-black transform group-hover/btn:translate-x-1.5 transition-transform duration-300" />
               </button>
-
             </div>
+            
           </form>
         </div>
-
       </div>
+      
+      {/* Custom Scrollbar styling for narrow mobile views */}
+      <style dangerouslySetInnerHTML={{__html: `
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: rgba(255,255,255,0.02);
+          border-radius: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: rgba(245, 242, 22, 0.2);
+          border-radius: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: rgba(245, 242, 22, 0.5);
+        }
+      `}} />
     </div>
   );
 }
