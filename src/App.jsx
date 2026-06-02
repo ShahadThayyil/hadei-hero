@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // Import your page components
 import HadeiHero from './pages/HadeiHero';
 import HadeiJoinForm from './pages/HadeiJoinForm'; // Make sure this path is correct
+import HadeiContactPage from './pages/HadeiContactPage';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         
         {/* The freelancer application form */}
         <Route path="/apply" element={<HadeiJoinForm />} />
+        <Route path="/contact" element={<HadeiContactPage />} />
       </Routes>
     </Router>
   );

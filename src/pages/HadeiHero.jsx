@@ -1,120 +1,193 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaInstagram } from 'react-icons/fa6';
-import { LiaLongArrowAltRightSolid } from 'react-icons/lia';
+import { LiaLongArrowAltRightSolid, LiaHandshakeSolid } from 'react-icons/lia';
+import { FiUserCheck, FiShield } from 'react-icons/fi';
 
 export default function HadeiHero() {
   const navigate = useNavigate();
 
+  const qualities = [
+    { 
+      title: "Guaranteed Payments", 
+      icon: <FiShield className="w-4 h-4 md:w-5 md:h-5 text-black mb-1.5 transition-transform duration-300 group-hover:-translate-y-1" /> 
+    },
+    { 
+      title: "Verified Profiles", 
+      icon: <LiaHandshakeSolid className="w-5 h-5 md:w-6 md:h-6 text-black mb-1.5 transition-transform duration-300 group-hover:-translate-y-1" /> 
+    },
+    { 
+      title: "Verified Clients", 
+      icon: <FiUserCheck className="w-4 h-4 md:w-5 md:h-5 text-black mb-1.5 transition-transform duration-300 group-hover:-translate-y-1" /> 
+    }
+  ];
+
   return (
-    <div className="relative h-[100dvh] w-full bg-[#F5F216] text-black font-sans overflow-hidden flex items-center justify-center selection:bg-black selection:text-[#F5F216]">
+    <div className="relative h-[100dvh] w-full bg-[#0a0d0a] text-white font-meiro overflow-hidden flex flex-col selection:bg-[#F5F216] selection:text-black box-border">
       
       {/* ── BACKGROUND ARCHITECTURE ── */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:5vw_5vw] md:bg-[size:3vw_3vw] pointer-events-none z-0"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-white opacity-40 blur-[100px] rounded-full pointer-events-none z-0"></div>
-
-      {/* ── 4-CORNER PINNED UI (The Frame) ── */}
+      <div 
+        className="absolute inset-0 z-0 opacity-[0.15] mix-blend-screen pointer-events-none fixed"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
+        }}
+      ></div>
       
-      {/* 1. Top Left - Logo */}
-      <div className="absolute top-6 left-6 md:top-10 md:left-10 z-50">
-        <div className="flex items-center cursor-pointer group">
-          <span className="text-2xl md:text-3xl font-black tracking-tighter text-black transition-transform duration-300 group-hover:scale-105">
-            hade<span className="inline-block transform rotate-180 origin-center text-[0.8em]">e</span>i.
-          </span>
+      <div className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] bg-[#F5F216] opacity-10 blur-[120px] rounded-full pointer-events-none z-0 fixed"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-[50vw] h-[50vw] bg-[#1a2e1a] opacity-30 blur-[150px] rounded-full pointer-events-none z-0 fixed"></div>
+
+      {/* ── FIXED QUALITIES TABS (Left Bottom Anchor) ── */}
+      <div className="fixed bottom-0 left-4 md:left-12 z-50 flex items-end gap-2 md:gap-3">
+        {qualities.map((item, i) => (
+          <div 
+            key={i} 
+            className="flex flex-col items-center justify-center bg-[#F5F216] w-[4.5rem] md:w-24 h-[5rem] md:h-[6.5rem] px-2 rounded-t-lg shadow-[0_-5px_15px_rgba(245,242,22,0.15)] group cursor-default transition-all duration-300 hover:h-[5.5rem] md:hover:h-[7rem]"
+          >
+            {item.icon}
+            <h4 className="text-[8px] md:text-[9.5px] font-black text-black uppercase tracking-wider text-center leading-tight">
+              {item.title}
+            </h4>
+          </div>
+        ))}
+      </div>
+
+      {/* ── COMING SOON TAB WITH ANIMATED GLOWING BORDER (Right Bottom Anchor) ── */}
+      <div className="fixed bottom-0 right-4 md:right-12 z-50 flex items-end">
+        <div className="relative w-[4.5rem] md:w-24 h-[5rem] md:h-[6.5rem] p-[1.5px] rounded-t-lg overflow-hidden shadow-[0_-5px_20px_rgba(245,242,22,0.25)] cursor-default transition-all duration-300 hover:h-[5.5rem] md:hover:h-[7rem] group">
+          
+          {/* Moving Conic Gradients for Border */}
+          <div className="absolute inset-[-150%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg,transparent_0%,transparent_70%,#F5F216_100%)] z-0"></div>
+          <div className="absolute inset-[-150%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_270deg,transparent_0%,transparent_70%,#F5F216_100%)] z-0"></div>
+          
+          {/* Inner Dark Tab */}
+          <div className="relative w-full h-full bg-[#0a0d0a] rounded-t-[6px] flex flex-col items-center justify-center z-10 px-1 group-hover:bg-[#0f140f] transition-colors duration-300">
+            <span className="text-[8px] md:text-[9.5px] font-black uppercase tracking-wider text-[#F5F216] text-center leading-tight drop-shadow-[0_0_8px_rgba(245,242,22,0.6)] group-hover:scale-105 transition-transform duration-300">
+              Coming<br />Soon
+            </span>
+          </div>
         </div>
       </div>
 
-      {/* ── Top Center - Coming Soon Badge ── */}
-      {/* Mobile: Plain text (no bg/border, black text). Desktop: Black card with yellow text */}
-      <div className="absolute top-20 md:top-10 left-1/2 transform -translate-x-1/2 z-50 flex items-center gap-2 md:gap-2.5 border-0  border-black bg-transparent  px-0 md:px-6 py-0 md:py-2 md:rounded-full shadow-none  hover:scale-105 transition-transform duration-300 cursor-default">
-        {/* <div className="h-1.5 w-1.5 md:h-2 w-2 rounded-full bg-black md:bg-[#F5F216] animate-pulse"></div> */}
-        <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.25em] text-black  mt-[1px]">
-          Coming Soon...
-        </span>
-      </div>
-
-      {/* 2. Top Right - CTA */}
-      <div className="absolute top-6 right-6 md:top-10 md:right-10 z-50">
-        {/* Added onClick navigate for React Router */}
-        <button 
-          onClick={() => navigate('/apply')}
-          className="group relative overflow-hidden rounded-full border-2 border-black bg-transparent px-5 py-2 md:px-6 md:py-2.5 text-[10px] md:text-xs font-bold uppercase tracking-widest text-black transition-all duration-300 hover:bg-black hover:text-[#F5F216]"
+      {/* ── HEADER ── */}
+      <header className="relative z-40 flex items-center justify-between px-5 py-3 md:px-12 md:py-4 w-full shrink-0">
+        
+        {/* Image Logo Section */}
+        <div 
+          onClick={() => navigate('/')} 
+          className="flex items-center justify-center bg-[#F5F216] px-4 md:px-5 py-1 rounded-md cursor-pointer group transition-all duration-300 hover:scale-105 hover:bg-[#fffb29] shadow-[0_0_15px_rgba(245,242,22,0.15)] hover:shadow-[0_0_25px_rgba(245,242,22,0.3)]"
         >
-          <span className="relative z-10 flex items-center gap-2">
-            Get In Touch
-            <LiaLongArrowAltRightSolid className="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-300" />
-          </span>
-        </button>
-      </div>
+          <img 
+            src="https://res.cloudinary.com/dmtzmgbkj/image/upload/v1780479006/WhatsApp_Image_2026-05-22_at_2.18.05_PM__1_-removebg-preview_befo5g.png" 
+            alt="Hadei Logo" 
+            className="h-5 md:h-8 w-auto object-contain" 
+          />
+        </div>
 
-      {/* 3. Bottom Left - Telemetry / Copyright */}
-      <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 z-50 hidden md:flex flex-col gap-1 text-[10px] font-bold uppercase tracking-[0.2em] text-black/60">
-        <span>EST. 2026 // SYST_01</span>
-        <span>All Rights Reserved</span>
-        <span className="text-black">© Hadei Workspace</span>
-      </div>
-
-      {/* 4. Bottom Right - Social */}
-      <div className="absolute bottom-6 right-6 md:bottom-10 md:right-10 z-50">
-        <a 
-          href="https://instagram.com" 
-          target="_blank" 
-          rel="noreferrer" 
-          className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-black bg-[#F5F216] text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none"
-          aria-label="Instagram"
-        >
-          <FaInstagram className="h-5 w-5" />
-        </a>
-      </div>
+        {/* Navigation Action Group */}
+        <div className="flex items-center gap-3 md:gap-5">
+          <button 
+            onClick={() => navigate('/contact')}
+            className="group flex items-center justify-center gap-1.5 px-4 py-2 md:px-5 md:py-2.5 bg-[#F5F216] rounded-md text-[10px] md:text-[11px] font-black uppercase tracking-widest text-black transition-all duration-300 hover:bg-[#fffb29] shadow-md"
+          >
+            <span className="text-black/50 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">/</span>
+            Contact
+            <span className="text-black/50 opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">/</span>
+          </button>
+          
+          <button 
+            onClick={() => navigate('/apply')}
+            className="group flex items-center overflow-hidden rounded-md bg-[#F5F216] transition-all duration-300 hover:bg-[#fffb29] shadow-[0_0_15px_rgba(245,242,22,0.2)] hover:shadow-[0_0_20px_rgba(245,242,22,0.4)]"
+          >
+            <span className="px-4 py-2 md:px-5 md:py-2.5 text-[10px] md:text-[11px] font-black uppercase tracking-widest text-black transition-colors">
+              Join Hadei
+            </span>
+            <div className="h-full px-3 py-2 md:py-2.5 bg-black/10 flex items-center justify-center transition-colors group-hover:bg-black/20">
+              <LiaLongArrowAltRightSolid className="h-3.5 w-3.5 md:h-4 md:w-4 text-black transform group-hover:translate-x-0.5 transition-transform duration-300" />
+            </div>
+          </button>
+        </div>
+      </header>
 
       {/* ── CENTER PIECE (The Core) ── */}
-      <main className="relative z-10 flex w-full flex-col items-center justify-center text-center px-4 mt-12 md:mt-0 mb-16 md:mb-16">
+      <main className="relative z-10 flex w-full flex-1 flex-col items-center justify-center px-4 min-h-0">
         
-        {/* Massive Sloped Typography Stack */}
-        {/* Removed px-8 and adjusted max-width to prevent horizontal scroll bars */}
-        <h1 className="relative flex flex-col items-center justify-center font-black uppercase tracking-tighter w-full max-w-[100vw] transform -rotate-[6deg] md:-rotate-[8deg] transition-transform duration-700 hover:-rotate-[4deg] cursor-default">
+        <div className="flex flex-col items-center w-full max-w-5xl gap-3 md:gap-5 min-h-0">
           
-          <span className="text-[3.5vw] md:text-[2vw] font-medium tracking-[0.5em] text-black/80 mb-2 md:mb-[-1vw] z-10 md:whitespace-nowrap">
-            Tired of chasing
-          </span>
-          
-          {/* Layer 1: Solid Black (Fixed padding by removing whitespace-nowrap on mobile and lowering vw) */}
-          <span className="text-[13.5vw] md:text-[13vw] leading-[0.85] md:leading-[0.8] text-black z-10 drop-shadow-2xl hover:scale-[1.02] transition-transform duration-500 md:whitespace-nowrap break-words">
-            UNTRUSTED
-          </span>
-          
-          {/* Layer 2: Outlined Hollow Text (Fixed padding by removing whitespace-nowrap on mobile and lowering vw) */}
-          <span className="text-[13.5vw] md:text-[13vw] leading-[0.85] md:leading-[0.8] text-transparent z-10 hover:scale-[1.02] transition-transform duration-500 md:whitespace-nowrap break-words" style={{ WebkitTextStroke: '2px black' }}>
-            CLIENTS?
-          </span>
-          
-        </h1>
+          <div className="flex flex-col items-center text-center shrink-0">
+            <h1 className="text-[clamp(3rem,8vw,4rem)] md:text-[clamp(3.5rem,6.5vw,5.5rem)] leading-[0.85] font-black uppercase tracking-tighter text-[#F5F216] drop-shadow-[0_0_40px_rgba(245,242,22,0.2)]">
+              UNTRUSTED
+              <br />
+              CLIENTS?
+            </h1>
+            <p className="mt-1.5 md:mt-3 text-xs sm:text-sm md:text-base font-medium tracking-wide text-white/80 max-w-[90%] md:max-w-2xl leading-snug">
+              Tired of chasing. Hadei is a secure workspace platform with unrivaled client management.
+            </p>
+          </div>
 
+          {/* 3D Problem/Solution Card with Animated Border */}
+          <div className="relative w-full max-w-[92vw] sm:max-w-md md:max-w-lg perspective-[1200px] group cursor-default shrink-0">
+            
+            {/* 3D Transform Wrapper & Animated Border Container */}
+            <div className="relative w-full rounded-3xl p-[1.5px] md:p-[2px] transition-transform duration-700 ease-out transform rotate-x-6 md:rotate-x-12 -rotate-y-6 md:-rotate-y-12 rotate-z-2 group-hover:rotate-x-0 group-hover:rotate-y-0 group-hover:rotate-z-0 shadow-[0_20px_50px_-15px_rgba(245,242,22,0.25)] overflow-hidden">
+              
+              {/* Moving Conic Gradients */}
+              <div className="absolute inset-[-150%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg,transparent_0%,transparent_70%,#F5F216_100%)] z-0"></div>
+              <div className="absolute inset-[-150%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_270deg,transparent_0%,transparent_70%,#F5F216_100%)] z-0"></div>
+              
+              {/* Inner Card Content */}
+              <div className="w-full h-full rounded-[22px] md:rounded-[22px] bg-[#080a08]/95 overflow-hidden relative flex flex-col p-4 md:p-6 gap-3 md:gap-4 backdrop-blur-xl z-10">
+                
+                <div className="flex flex-col gap-1 md:gap-1.5">
+                  <span className="text-white/40 text-[8px] md:text-[10px] font-bold uppercase tracking-widest flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></div>
+                    The Problem
+                  </span>
+                  <h3 className="text-[15px] sm:text-lg md:text-xl font-black text-white leading-tight">
+                    Ghosted by clients? <br className="hidden sm:block" />
+                    Invoices ignored?
+                  </h3>
+                </div>
+
+                <div className="h-[1px] w-full bg-gradient-to-r from-white/10 via-white/20 to-white/10"></div>
+
+                <div className="flex flex-col gap-2 md:gap-3">
+                  <div className="flex flex-col gap-1 md:gap-1.5">
+                    <span className="text-[#F5F216] text-[8px] md:text-[10px] font-bold uppercase tracking-widest flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#F5F216]"></div>
+                      The Solution
+                    </span>
+                    <p className="text-white/70 text-[10.5px] sm:text-xs md:text-sm font-medium leading-relaxed">
+                      Lock down your workflow. Establish bulletproof agreements and secure guaranteed escrow payments before you ever write a line of code.
+                    </p>
+                  </div>
+                  
+                  <div className="flex flex-col sm:flex-row gap-2 mt-2">
+                    <button 
+                      onClick={() => navigate('/apply')}
+                      className="group/btn flex-1 flex items-center justify-center gap-2 bg-[#F5F216] py-2.5 px-4 rounded-lg transition-all hover:bg-[#fffb29] hover:scale-[1.02]"
+                    >
+                      <span className="text-[9px] md:text-[11px] font-black uppercase tracking-widest text-black">
+                        Notify Me
+                      </span>
+                      <LiaLongArrowAltRightSolid className="h-4 w-4 text-black transform group-hover/btn:translate-x-1 transition-transform duration-300" />
+                    </button>
+
+                    <button 
+                      onClick={() => navigate('/contact')}
+                      className="group/btn flex-1 flex items-center justify-center gap-2 bg-white/5 border border-white/10 py-2.5 px-4 rounded-lg transition-all hover:bg-white/10 hover:border-white/30 hover:scale-[1.02]"
+                    >
+                      <span className="text-[9px] md:text-[11px] font-black uppercase tracking-widest text-white">
+                        Get In Touch
+                      </span>
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          
+        </div>
       </main>
-
-      {/* ── Bottom Centered CTA Badge ── */}
-      <div className="absolute bottom-16 md:bottom-16 left-1/2 transform -translate-x-1/2 z-30 pointer-events-auto">
-        <button 
-          onClick={() => navigate('/apply')}
-          className="group flex items-center p-1.5 md:p-2 bg-white/30 backdrop-blur-md border border-black/20 rounded-full shadow-[0_20px_40px_rgba(0,0,0,0.2)] transition-all duration-500 hover:bg-black hover:scale-105 hover:border-black"
-        >
-          <div className="flex items-center gap-4 px-5 md:px-7">
-            <span className="text-xs md:text-sm font-black uppercase tracking-widest text-black group-hover:text-white transition-colors duration-300">
-              Enter Hadei
-            </span>
-          </div>
-          
-          <div className="flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full bg-black text-[#F5F216] transition-all duration-500 group-hover:bg-[#F5F216] group-hover:text-black shadow-inner">
-            <LiaLongArrowAltRightSolid className="h-5 w-5 md:h-6 md:w-6 transform group-hover:translate-x-1 transition-transform duration-500" />
-          </div>
-        </button>
-      </div>
-
-      {/* Mobile-only Bottom copyright */}
-      <div className="absolute bottom-6 left-6 z-50 md:hidden flex text-[9px] font-bold uppercase tracking-[0.2em] text-black/60">
-        © 2026 Hadei.
-      </div>
-
     </div>
   );
 }

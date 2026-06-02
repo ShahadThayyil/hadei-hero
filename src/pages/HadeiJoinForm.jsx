@@ -1,126 +1,142 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LiaLongArrowAltRightSolid } from 'react-icons/lia';
+import { LiaLongArrowAltRightSolid, LiaLongArrowAltLeftSolid } from 'react-icons/lia';
 
 export default function HadeiJoinForm() {
   const navigate = useNavigate();
 
   return (
-    <div className="relative h-[100dvh] w-full bg-[#F5F216] text-black font-sans overflow-hidden flex items-center justify-center selection:bg-black selection:text-[#F5F216] p-3 md:p-6 box-border">
+    <div className="relative min-h-[100dvh] w-full bg-[#0a0d0a] text-white font-meiro flex flex-col md:flex-row selection:bg-[#F5F216] selection:text-black overflow-x-hidden">
       
       {/* ── BACKGROUND ARCHITECTURE ── */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:5vw_5vw] md:bg-[size:3vw_3vw] pointer-events-none z-0"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-white opacity-40 blur-[100px] rounded-full pointer-events-none z-0"></div>
+      <div 
+        className="fixed inset-0 z-0 opacity-[0.15] mix-blend-screen pointer-events-none"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
+        }}
+      ></div>
+      
+      <div className="fixed top-1/4 -left-20 w-[50vw] h-[50vw] bg-[#F5F216] opacity-[0.08] blur-[150px] rounded-full pointer-events-none z-0"></div>
+      <div className="fixed bottom-0 right-0 w-[40vw] h-[40vw] bg-[#1a2e1a] opacity-20 blur-[130px] rounded-full pointer-events-none z-0"></div>
 
-      {/* ── MAIN CONTENT: STRICT LOCKED DOSSIER ── */}
-      {/* Removed h-full on mobile (using h-auto) so it shrink-wraps and kills white space. Kept md:h-full for desktop */}
-      <main className="relative z-10 w-full h-auto md:h-full max-h-[95dvh] md:max-h-[85dvh] max-w-5xl flex flex-col md:flex-row bg-white border-[3px] border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] md:shadow-[15px_15px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
+      {/* ── LEFT SIDE: IMMERSIVE BRANDING ── */}
+      <div className="relative z-10 flex-1 flex flex-col justify-between p-6 md:p-12 lg:p-16 min-h-[45vh] md:min-h-[100dvh]">
         
-        {/* Left Column: Branding & Logo */}
-        {/* Tightened mobile padding (py-3 px-4) to compress vertical height */}
-        <div className="w-full md:w-[45%] bg-black text-[#F5F216] py-3 px-4 md:p-10 flex flex-row md:flex-col justify-between items-center md:items-start border-b-[3px] md:border-b-0 md:border-r-[3px] border-black relative shrink-0 z-20">
-          <div className="absolute inset-0 bg-[radial-gradient(#F5F216_1px,transparent_1px)] bg-[size:15px_15px] opacity-[0.03] pointer-events-none"></div>
-
-          {/* Logo */}
-          <div onClick={() => navigate('/')} className="relative z-10 flex items-center cursor-pointer group w-fit shrink-0">
-            <span className="text-2xl md:text-3xl font-black tracking-tighter text-[#F5F216] transition-transform duration-300 group-hover:scale-105">
-              hade<span className="inline-block transform rotate-180 origin-center text-[0.8em]">e</span>i.
+        {/* Header / Logo */}
+        <header className="flex items-center justify-between w-full">
+          <div onClick={() => navigate('/')} className="flex items-center cursor-pointer group w-fit">
+            <span className="text-2xl md:text-3xl font-black tracking-tighter text-white transition-transform duration-300 group-hover:scale-105">
+              hade<span className="inline-block transform rotate-180 origin-center text-[#F5F216]">e</span>i.
             </span>
           </div>
+        </header>
 
-          {/* Branding Typography */}
-          <div className="relative z-10 flex flex-col items-end md:items-start md:mt-auto md:justify-center flex-1 w-full ml-4 md:ml-0">
-            {/* Removed mobile rotation and adjusted leading so it sits perfectly inline with the logo */}
-            <h1 className="font-zxx text-[5.5vw] md:text-[5.5vw] leading-[1] md:leading-[0.85] tracking-tighter uppercase drop-shadow-lg transform md:-rotate-[6deg] tracking-[-0.05em] transition-transform duration-700 hover:-rotate-[2deg] cursor-default text-right md:text-left">
-              Join <span className="hidden md:inline"><br /></span>
-              <span className="text-transparent" style={{ WebkitTextStroke: '1px #F5F216' }}>The</span> <span className="hidden md:inline"><br /></span>
-              Team.
-            </h1>
-            
-            <p className="text-white/70 text-xs font-medium leading-relaxed max-w-xs mt-4 hidden md:block">
-              We are always looking for passionate creatives to collaborate on premium, verified projects.
+        {/* Hero Typography */}
+        <div className="flex flex-col mt-auto mb-4 md:mb-10">
+         
+          
+          <h1 className="text-[16vw] md:text-[8vw] lg:text-[7vw] leading-[0.85] font-black uppercase tracking-tighter text-white z-20">
+            Build
+            <br />
+            <span className="text-transparent" style={{ WebkitTextStroke: '2px #F5F216' }}>Beyond</span>
+            <br />
+            Limits.
+          </h1>
+          <p className="mt-6 text-sm md:text-base lg:text-lg font-medium tracking-wide text-white/70 max-w-sm md:max-w-md">
+            We're recruiting top-tier creatives and closers to collaborate on verified, high-value projects.
+          </p>
+        </div>
+      </div>
+
+      {/* ── RIGHT SIDE: FORM PANEL ── */}
+      <div className="relative z-20 w-full md:w-[480px] lg:w-[550px] md:min-h-[100dvh] bg-[#080a08]/80 backdrop-blur-2xl border-t md:border-t-0 md:border-l border-white/10 flex flex-col justify-center p-6 md:p-10 lg:p-12 shrink-0 shadow-[-20px_0_50px_rgba(0,0,0,0.5)]">
+        
+        <div className="w-full max-w-md mx-auto">
+          {/* Form Header */}
+          <div className="flex flex-col gap-2 mb-8 md:mb-10">
+            <h2 className="text-2xl md:text-3xl font-black text-white leading-tight">
+              Submit Profile
+            </h2>
+            <p className="text-white/50 text-xs md:text-sm font-medium">
+              Secure your spot in the Hadei network.
             </p>
           </div>
-        </div>
 
-        {/* Right Column: The Non-Scrollable Form */}
-        <div className="w-full md:w-[55%] md:flex-1 bg-white py-5 px-5 md:p-10 flex flex-col justify-center overflow-hidden relative z-10 min-h-0">
-          
-          <h2 className="text-[10px] md:text-xs font-black uppercase tracking-widest mb-3 md:mb-5 border-b-2 border-black pb-2 text-black/80 shrink-0">
-            Application Form
-          </h2>
-
-          {/* Removed flex-1 on mobile form to prevent stretching and white gaps */}
-          <form className="flex flex-col gap-3 md:gap-5 justify-center min-h-0">
+          {/* Form Elements */}
+          <form className="flex flex-col gap-5">
             
             {/* Input Group: Name */}
-            <div className="relative flex flex-col shrink-0">
-              <label className="text-[9px] font-bold uppercase tracking-widest text-black/60 mb-0.5">
+            <div className="flex flex-col shrink-0 group">
+              <label className="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-2 transition-colors group-focus-within:text-[#F5F216]">
                 Full Name
               </label>
               <input 
                 type="text" 
-                className="w-full bg-transparent border-b-2 border-black/20 py-1.5 md:py-2 text-sm md:text-lg font-bold tracking-tight transition-all duration-300 rounded-none focus:outline-none focus:bg-[#F5F216] focus:border-black focus:px-3 focus:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] focus:-translate-y-0.5 focus:-translate-x-0.5"
-                placeholder="John Doe"
+                className="w-full bg-transparent border-b border-white/20 py-2 text-white placeholder-white/20 text-base md:text-lg font-medium focus:outline-none focus:border-[#F5F216] transition-all rounded-none"
+                placeholder="Enter your name"
                 required
               />
             </div>
 
             {/* Input Group: Email */}
-            <div className="relative flex flex-col shrink-0">
-              <label className="text-[9px] font-bold uppercase tracking-widest text-black/60 mb-0.5">
+            <div className="flex flex-col shrink-0 group">
+              <label className="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-2 mt-2 transition-colors group-focus-within:text-[#F5F216]">
                 Email Address
               </label>
               <input 
                 type="email" 
-                className="w-full bg-transparent border-b-2 border-black/20 py-1.5 md:py-2 text-sm md:text-lg font-bold tracking-tight transition-all duration-300 rounded-none focus:outline-none focus:bg-[#F5F216] focus:border-black focus:px-3 focus:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] focus:-translate-y-0.5 focus:-translate-x-0.5"
+                className="w-full bg-transparent border-b border-white/20 py-2 text-white placeholder-white/20 text-base md:text-lg font-medium focus:outline-none focus:border-[#F5F216] transition-all rounded-none"
                 placeholder="hello@example.com"
                 required
               />
             </div>
 
             {/* Input Group: Portfolio */}
-            <div className="relative flex flex-col shrink-0">
-              <label className="text-[9px] font-bold uppercase tracking-widest text-black/60 mb-0.5">
-                Portfolio Link
+            <div className="flex flex-col shrink-0 group">
+              <label className="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-2 mt-2 transition-colors group-focus-within:text-[#F5F216]">
+                Portfolio / Social Link
               </label>
               <input 
                 type="url" 
-                className="w-full bg-transparent border-b-2 border-black/20 py-1.5 md:py-2 text-sm md:text-lg font-bold tracking-tight transition-all duration-300 rounded-none focus:outline-none focus:bg-[#F5F216] focus:border-black focus:px-3 focus:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] focus:-translate-y-0.5 focus:-translate-x-0.5"
+                className="w-full bg-transparent border-b border-white/20 py-2 text-white placeholder-white/20 text-base md:text-lg font-medium focus:outline-none focus:border-[#F5F216] transition-all rounded-none"
                 placeholder="https://yourwork.com"
                 required
               />
             </div>
 
             {/* Select Group: Discipline */}
-            <div className="relative flex flex-col shrink-0">
-              <label className="text-[9px] font-bold uppercase tracking-widest text-black/60 mb-0.5">
-                Select Your Role
+            <div className="relative flex flex-col shrink-0 group">
+              <label className="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-2 mt-2 transition-colors group-focus-within:text-[#F5F216]">
+                Primary Discipline
               </label>
               <select 
-                className="w-full bg-transparent border-b-2 border-black/20 py-1.5 md:py-2 text-sm md:text-base font-bold tracking-tight transition-all duration-300 rounded-none appearance-none cursor-pointer focus:outline-none focus:bg-[#F5F216] focus:border-black focus:px-3 focus:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] focus:-translate-y-0.5 focus:-translate-x-0.5"
+                className="w-full bg-transparent border-b border-white/20 py-2 text-white text-base md:text-lg font-medium appearance-none cursor-pointer focus:outline-none focus:border-[#F5F216] transition-all rounded-none"
                 required
                 defaultValue=""
               >
-                <option value="" disabled>Choose a discipline...</option>
-                <option value="graphic_design">Graphic Designer</option>
-                <option value="content_creation">Content Creator</option>
-                <option value="telecalling">Telecaller / Sales</option>
-                <option value="other">Other Creative</option>
+                <option value="" disabled className="bg-[#0a0d0a] text-white/50">Select your expertise...</option>
+                <option value="graphic_design" className="bg-[#111]">Graphic Designer</option>
+                <option value="content_creation" className="bg-[#111]">Content Creator</option>
+                <option value="telecalling" className="bg-[#111]">Telecaller / Sales</option>
+                <option value="other" className="bg-[#111]">Other</option>
               </select>
-              <div className="absolute right-2 bottom-2 pointer-events-none text-sm md:text-lg font-black text-black/60">↓</div>
+              {/* Custom Arrow */}
+              <div className="absolute right-2 bottom-3 pointer-events-none text-white/40 text-xs">
+                ▼
+              </div>
             </div>
 
             {/* ── BUTTON ROW: RETURN & SUBMIT ── */}
-            <div className="mt-2 md:mt-4 flex flex-row gap-2 md:gap-4 shrink-0">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mt-8 shrink-0">
               
-              {/* Return Button */}
+              {/* Back Button */}
               <button 
                 type="button" 
-                onClick={() => navigate('/')}
-                className="group flex-[1] flex items-center justify-center bg-transparent text-black px-2 py-2.5 md:py-3 border-[2.5px] md:border-[3px] border-black transition-all duration-300 hover:bg-black hover:text-[#F5F216] shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-[3px] active:translate-y-[3px]"
+                onClick={() => navigate(-1)} 
+                className="group/btn sm:flex-[1] flex items-center justify-center gap-2 bg-white/5 border border-white/10 py-3.5 px-4 rounded-xl transition-all hover:bg-white/10 hover:border-white/30"
               >
-                <span className="text-[9px] md:text-xs font-black uppercase tracking-widest">
+                <LiaLongArrowAltLeftSolid className="h-4 w-4 text-white transform group-hover/btn:-translate-x-1 transition-transform duration-300" />
+                <span className="text-[11px] font-black uppercase tracking-widest text-white">
                   Back
                 </span>
               </button>
@@ -128,20 +144,19 @@ export default function HadeiJoinForm() {
               {/* Submit Button */}
               <button 
                 type="submit" 
-                className="group flex-[2.5] flex items-center justify-between bg-black text-[#F5F216] px-3 md:px-5 py-2.5 md:py-3 border-[2.5px] md:border-[3px] border-black transition-all duration-300 hover:bg-[#F5F216] hover:text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-[3px] active:translate-y-[3px]"
+                className="group/btn sm:flex-[2.5] flex items-center justify-center gap-3 bg-[#F5F216] py-3.5 px-6 rounded-xl transition-all hover:bg-[#fffb29] hover:scale-[1.02] shadow-[0_0_20px_rgba(245,242,22,0.15)] hover:shadow-[0_0_30px_rgba(245,242,22,0.3)]"
               >
-                <span className="text-[9px] md:text-xs font-black uppercase tracking-widest">
-                  Apply Now
+                <span className="text-[11px] font-black uppercase tracking-widest text-black">
+                  Submit Application
                 </span>
-                <LiaLongArrowAltRightSolid className="h-4 w-4 md:h-5 md:w-5 transform group-hover:translate-x-1.5 transition-transform duration-300" />
+                <LiaLongArrowAltRightSolid className="h-5 w-5 text-black transform group-hover/btn:translate-x-1.5 transition-transform duration-300" />
               </button>
 
             </div>
-
           </form>
         </div>
 
-      </main>
+      </div>
     </div>
   );
 }
